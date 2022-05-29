@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+    <style>
+        table,td,th{
+            border:1px solid black;
+        }
+    </style>
+</head>
+<body>
+    {% if title=="Course Data" %}
+        <h1>Course Details</h1>
+        <table id="course-detail-table">
+            <tr><th>Average Marks</th><th>Maximum Marks</th></tr>
+            <tr><td>{{mean}}</td><td>{{max_marks}}</td></tr>
+        </table>
+        <img src="./static/histogram.png" alt="histogram">
+
+    {% elif title=="Student Data" %}
+    <h1>Student Details</h1>
+    <table border="2" id="student-details-table">
+        <tr><th>Student id</th>
+        <th>Course id</th>
+        <th>Marks</th></tr>
+        {% for i in student_data %}
+    <tr>
+        <td>{{i[0]}}</td>
+        <td>{{i[1]}}</td>
+        <td>{{i[2]}}</td>
+    </tr>
+        {% endfor %}
+        <tr><td colspan="2" style="text-align:center">Total Marks</td><td >{{total_marks}}</td></tr>
+    </table>
+
+    {% else %}
+    <h1>Wrong Inputs</h1>
+    <p>
+        Something went wrong
+    </p>
+    {% endif %}
+    <a href="/">Go Back</a>
+</body>
+</html>
